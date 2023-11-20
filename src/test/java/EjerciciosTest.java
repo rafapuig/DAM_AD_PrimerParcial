@@ -221,7 +221,7 @@ public class EjerciciosTest {
     @MethodSource
     void testGetNotaMediaExpediente(Alumno alumno, OptionalDouble expected) {
         OptionalDouble average = Ejercicios
-                .getNotaMediaExpediente(Calificaciones.CALIFICACIONES_SAMPLE, alumno);
+                .getNotaMediaExpediente(Calificaciones.CALIFICACIONES_SAMPLE, alumno, Ciclos.DAM);
 
         System.out.println(average);
 

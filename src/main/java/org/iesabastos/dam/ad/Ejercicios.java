@@ -229,10 +229,11 @@ public class Ejercicios {
      * @return Un OptionalDouble que contiene el valor de la nota medio o vacío si no hay ningún módulo superado
      */
 
-    public static OptionalDouble getNotaMediaExpediente(Collection<Calificacion> calificaciones, Alumno alumno) {
+    public static OptionalDouble getNotaMediaExpediente(Collection<Calificacion> calificaciones, Alumno alumno, Ciclo ciclo) {
 
         return calificaciones.stream()
                 .filter(calificacion -> calificacion.alumno().equals(alumno))
+                .filter(calificacion -> calificacion.modulo().ciclo().equals(ciclo))
                 .filter(calificacion -> calificacion.nota().isPresent())
                 .filter(calificacion -> calificacion.nota().get().getNumericValue() >= 5)
                 //.peek(System.out::println)
