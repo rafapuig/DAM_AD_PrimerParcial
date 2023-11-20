@@ -19,7 +19,8 @@ public class Ejercicios {
      * @return Un predicado que aplicado a un Long (el factor) comprueba si ese factor es divisor del número
      */
     public static LongPredicate isDivisor(long number) {
-        return factor -> number % factor == 0;
+        // TODO: devolver el predicado
+        return null;
     }
 
 
@@ -34,13 +35,7 @@ public class Ejercicios {
      * @return un boolean que indica si es primo o no el número
      */
     public static boolean isPrime(long number) {
-        return LongStream.rangeClosed(2, (long) Math.sqrt(number))
-                .noneMatch(isDivisor(number));
-    }
-
-    public static LongPredicate isPrime() {
-        return number -> LongStream.rangeClosed(2, (long) Math.sqrt(number))
-                .noneMatch(isDivisor(number));
+        //TODO: devolver si es primo o no
     }
 
 
@@ -48,12 +43,7 @@ public class Ejercicios {
     //---- EJERCICIO 3
 
     public static Set<Long> generatePrimes(long upTo) {
-
-        return LongStream.range(1, upTo)
-                //.peek(n -> System.out.println("Testing prime: " + n))
-                .filter(isPrime())
-                //.peek(n -> System.out.println("Adding prime: " + n))
-                .collect(LinkedHashSet::new, LinkedHashSet::add, LinkedHashSet::addAll);
+        //TODO: generar los numeros primos
     }
 
 
@@ -69,11 +59,7 @@ public class Ejercicios {
      * @return las horas totales del ciclo
      */
     public static int getHorasTotales(Collection<Modulo> modulos, Ciclo ciclo) {
-        // TODO: implementa el codigo
-        return modulos.stream()
-                .filter(modulo -> modulo.ciclo().equals(ciclo))
-                .mapToInt(Modulo::horas)
-                .sum();
+        // TODO: implementa el codigo que devuelve las horas totales del ciclo
     }
 
 
@@ -93,17 +79,8 @@ public class Ejercicios {
     public static int getHorasPendientes(
             Collection<Calificacion> calificaciones, Collection<Modulo> modulos, Alumno alumno, Ciclo ciclo) {
 
-        int horasSuperadas = calificaciones.stream()
-                .filter(calificacion -> calificacion.alumno().equals(alumno))
-                .filter(calificacion -> calificacion.modulo().ciclo().equals(ciclo))
-                .filter(calificacion -> calificacion.nota().isPresent())
-                .filter(calificacion -> calificacion.nota().get().getNumericValue() >= 5)
-                .mapToInt(calificacion -> calificacion.modulo().horas())
-                .sum();
+        //TODO: implementa el codigo que devuelve las horas pendientes del alumno para terminar el ciclo
 
-        int horasTotalesCiclo = getHorasTotales(modulos, ciclo);
-
-        return horasTotalesCiclo - horasSuperadas;
     }
 
 
@@ -120,24 +97,7 @@ public class Ejercicios {
      */
     public static Map<Alumno, Integer> getHorasPendientesByCiclo(Collection<Calificacion> calificaciones, Collection<Modulo> modulos, Ciclo ciclo) {
 
-        int horasTotalesCiclo = modulos.stream()
-                .filter(calificacion -> calificacion.ciclo().equals(ciclo))
-                .mapToInt(Modulo::horas).sum();
-
-        //int horasTotalesCiclo = getHorasTotales(Modulos.MODULOS, ciclo);
-
-        var horasPendientesMap = calificaciones.stream()
-                .filter(calificacion -> calificacion.modulo().ciclo().equals(ciclo))
-                .filter(calificacion -> calificacion.nota().isPresent())
-                .filter(calificacion -> calificacion.nota().get().getNumericValue() >= 5)
-                .collect(Collectors.groupingBy(
-                        Calificacion::alumno,
-                        Collectors.collectingAndThen(
-                                Collectors.summingInt(
-                                        calificacion -> calificacion.modulo().horas()),
-                                horasSuperadas -> horasTotalesCiclo - horasSuperadas)));
-
-        return horasPendientesMap;
+        //TODO: devuelve un mapa cuyas entradas tiene como clave un alumno y valor las horas pendientes
     }
 
 
@@ -154,10 +114,7 @@ public class Ejercicios {
      * @return un Supplier que proporcionara un Stream donde ya se aplican las operaciones de filtrado
      */
     public static Supplier<Stream<Calificacion>> getFilteredCalificacionesSupplier(Collection<Calificacion> calificaciones, Alumno alumno) {
-        return () -> calificaciones.stream()
-                .filter(calificacion -> calificacion.alumno().equals(alumno))
-                .filter(calificacion -> calificacion.nota().isPresent())
-                .filter(calificacion -> calificacion.nota().get().getNumericValue() >= 5);
+        //TODO: devuelve un Stream<Calificacion> al que has encadenado operaciones de filtrado
     }
 
 
@@ -175,9 +132,7 @@ public class Ejercicios {
      * @return Un OptionalDouble con el valor decimal de la fracción
      */
     public static OptionalDouble fractionToDecimal(double numerator, long denominator) {
-        return denominator != 0 ?
-                OptionalDouble.of(numerator/ denominator) :
-                OptionalDouble.empty();
+        //TODO: devuelve el valor decimal de la fraccion como OptionalDouble
     }
 
 
@@ -202,11 +157,7 @@ public class Ejercicios {
      */
     public static <T> Collector<T, ?, OptionalDouble> averagingWeighted(
             ToDoubleFunction<T> valueExtractor, ToLongFunction<T> weightExtractor) {
-        return Collectors.teeing(
-                Collectors.summingDouble(
-                        elem -> valueExtractor.applyAsDouble(elem) * weightExtractor.applyAsLong(elem)),
-                Collectors.summingLong(weightExtractor),
-                (valueWeightedSum, weightsSum) -> fractionToDecimal(valueWeightedSum, weightsSum));
+        //TODO: devuelve el colector generado para cacular medias ponderadas
     }
 
 
@@ -229,16 +180,10 @@ public class Ejercicios {
      * @return Un OptionalDouble que contiene el valor de la nota medio o vacío si no hay ningún módulo superado
      */
 
-    public static OptionalDouble getNotaMediaExpediente(Collection<Calificacion> calificaciones, Alumno alumno) {
+    public static OptionalDouble getNotaMediaExpediente(
+            Collection<Calificacion> calificaciones, Alumno alumno, Ciclo ciclo) {
 
-        return calificaciones.stream()
-                .filter(calificacion -> calificacion.alumno().equals(alumno))
-                .filter(calificacion -> calificacion.nota().isPresent())
-                .filter(calificacion -> calificacion.nota().get().getNumericValue() >= 5)
-                //.peek(System.out::println)
-                .collect(averagingWeighted(
-                        calificacion -> calificacion.nota().orElseThrow().getNumericValue(),
-                        calificacion -> calificacion.modulo().horas()));
+        //TODO: devuelve la nota media del alumno en un ciclo
     }
 
 
@@ -258,26 +203,8 @@ public class Ejercicios {
 
     public static Map<Alumno, OptionalDouble> getNotaMediaExpediente(Collection<Calificacion> calificaciones, Ciclo ciclo) {
 
-        return calificaciones.stream()
-                .filter(calificacion -> calificacion.modulo().ciclo().equals(ciclo))
-                .filter(calificacion -> calificacion.nota().isPresent())
-                .filter(calificacion -> calificacion.nota().get().getNumericValue() >= 5)
-                .filter(calificacion -> !calificacion.modulo().abreviatura().equals("FCT"))
-                .collect(Collectors.collectingAndThen(
-                        Collectors.groupingBy(
-                                Calificacion::alumno,
-                                averagingWeighted(
-                                        calificacion -> calificacion.nota().orElseThrow().getNumericValue(),
-                                        calificacion -> calificacion.modulo().horas())),
-                        result -> result.entrySet().stream()
-                                .sorted(Map.Entry.comparingByValue(
-                                        Comparator.comparing(opt -> opt.orElse(0),
-                                                Comparator.reverseOrder())))
-                                .collect(Collectors.toMap(
-                                        Map.Entry::getKey,
-                                        Map.Entry::getValue,
-                                        (e1, e2) -> e1,
-                                        LinkedHashMap::new))));
+        //TODO: devuelve un mapa con las notas medias de los alumnos de ese ciclo
+
     }
 
 
