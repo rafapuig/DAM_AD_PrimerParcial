@@ -44,7 +44,7 @@ public class Ejercicios {
     //---- EJERCICIO 3
 
     public static Set<Long> generatePrimes(long upTo) {
-        //TODO: generar los numeros primos
+        //TODO: generar los números primos
         return null;
     }
 
