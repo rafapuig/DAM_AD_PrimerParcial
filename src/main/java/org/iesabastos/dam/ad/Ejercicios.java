@@ -36,6 +36,7 @@ public class Ejercicios {
      */
     public static boolean isPrime(long number) {
         //TODO: devolver si es primo o no
+        return false;
     }
 
 
@@ -44,6 +45,7 @@ public class Ejercicios {
 
     public static Set<Long> generatePrimes(long upTo) {
         //TODO: generar los numeros primos
+        return null;
     }
 
 
@@ -60,6 +62,7 @@ public class Ejercicios {
      */
     public static int getHorasTotales(Collection<Modulo> modulos, Ciclo ciclo) {
         // TODO: implementa el codigo que devuelve las horas totales del ciclo
+        return 0;
     }
 
 
@@ -81,6 +84,7 @@ public class Ejercicios {
 
         //TODO: implementa el codigo que devuelve las horas pendientes del alumno para terminar el ciclo
 
+        return 0;
     }
 
 
@@ -98,6 +102,7 @@ public class Ejercicios {
     public static Map<Alumno, Integer> getHorasPendientesByCiclo(Collection<Calificacion> calificaciones, Collection<Modulo> modulos, Ciclo ciclo) {
 
         //TODO: devuelve un mapa cuyas entradas tiene como clave un alumno y valor las horas pendientes
+        return null;
     }
 
 
@@ -115,6 +120,7 @@ public class Ejercicios {
      */
     public static Supplier<Stream<Calificacion>> getFilteredCalificacionesSupplier(Collection<Calificacion> calificaciones, Alumno alumno) {
         //TODO: devuelve un Stream<Calificacion> al que has encadenado operaciones de filtrado
+        return null;
     }
 
 
@@ -133,6 +139,7 @@ public class Ejercicios {
      */
     public static OptionalDouble fractionToDecimal(double numerator, long denominator) {
         //TODO: devuelve el valor decimal de la fraccion como OptionalDouble
+        return null;
     }
 
 
@@ -158,6 +165,7 @@ public class Ejercicios {
     public static <T> Collector<T, ?, OptionalDouble> averagingWeighted(
             ToDoubleFunction<T> valueExtractor, ToLongFunction<T> weightExtractor) {
         //TODO: devuelve el colector generado para cacular medias ponderadas
+        return null;
     }
 
 
@@ -177,6 +185,7 @@ public class Ejercicios {
      *
      * @param calificaciones colecciones de calificaciones fuente de datos para obtener el resultado
      * @param alumno         alumno del que se quiere obtener la nota media
+     * @param ciclo          ciclo del cual se quieren obtener las notas del alumno
      * @return Un OptionalDouble que contiene el valor de la nota medio o vacío si no hay ningún módulo superado
      */
 
@@ -184,6 +193,7 @@ public class Ejercicios {
             Collection<Calificacion> calificaciones, Alumno alumno, Ciclo ciclo) {
 
         //TODO: devuelve la nota media del alumno en un ciclo
+        return null;
     }
 
 
@@ -205,6 +215,7 @@ public class Ejercicios {
 
         //TODO: devuelve un mapa con las notas medias de los alumnos de ese ciclo
 
+        return null;
     }
 
 
