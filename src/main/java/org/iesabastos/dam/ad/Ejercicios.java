@@ -226,6 +226,7 @@ public class Ejercicios {
      *
      * @param calificaciones colecciones de calificaciones fuente de datos para obtener el resultado
      * @param alumno         alumno del que se quiere obtener la nota media
+     * @param ciclo          ciclo del cual se quieren obtener las notas del alumno
      * @return Un OptionalDouble que contiene el valor de la nota medio o vacío si no hay ningún módulo superado
      */
 
