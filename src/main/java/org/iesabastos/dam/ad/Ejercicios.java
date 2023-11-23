@@ -206,7 +206,7 @@ public class Ejercicios {
                 Collectors.summingDouble(
                         elem -> valueExtractor.applyAsDouble(elem) * weightExtractor.applyAsLong(elem)),
                 Collectors.summingLong(weightExtractor),
-                (valueWeightedSum, weightsSum) -> fractionToDecimal(valueWeightedSum, weightsSum));
+                Ejercicios::fractionToDecimal);
     }
 
 
