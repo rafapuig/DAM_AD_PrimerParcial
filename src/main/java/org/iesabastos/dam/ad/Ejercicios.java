@@ -53,7 +53,9 @@ public class Ejercicios {
                 //.peek(n -> System.out.println("Testing prime: " + n))
                 .filter(isPrime())
                 //.peek(n -> System.out.println("Adding prime: " + n))
-                .collect(LinkedHashSet::new, LinkedHashSet::add, LinkedHashSet::addAll);
+                //.collect(LinkedHashSet::new, LinkedHashSet::add, LinkedHashSet::addAll);
+                .boxed()
+                .collect(Collectors.toCollection(LinkedHashSet::new));
     }
 
 
