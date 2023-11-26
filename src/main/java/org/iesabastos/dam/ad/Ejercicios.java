@@ -144,7 +144,7 @@ public class Ejercicios {
 
 
 
-    //---- EJERCICIO 7
+    //---- EJERCICIO 7.
 
     /**
      * Proporciona un Supplier que entrega un Stream de elementos Calificacion donde
